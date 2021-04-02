@@ -1,0 +1,7 @@
+/src/dataset/corpus/*
+/src/dataset/tok_model/*
+/src/dataset/__pycache__
+/src/model/__pycache__
+/src/output/*
+/src/trainer/__pycache__
+/.vscode
