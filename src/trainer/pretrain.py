@@ -17,8 +17,6 @@ class BERTTrainer:
         1. Masked Language Model : 3.3.1 Task #1: Masked LM
         2. Next Sentence prediction : 3.3.2 Task #2: Next Sentence Prediction
 
-    please check the details on README.md with simple example.
-
     """
 
     def __init__(self, bert: BERT, vocab_size: int,

@@ -12,16 +12,16 @@ class BertTokenizer():
     def __init__(self, path):
         self.path = path
         text_paths = [str(x) for x in Path("./dataset/corpus/").glob("**/*.txt")]
-        savedpath = "./dataset/tok_model/MaLaMo-vocab.txt"
+        savedpath = "./dataset/tok_model/MALBERT-vocab.txt"
         if os.path.exists(savedpath):
             self.tokenizer = tokenizers.BertWordPieceTokenizer(
-                "./dataset/tok_model/MaLaMo-vocab.txt",
+                "./dataset/tok_model/MALBERT-vocab.txt",
             )
         else:
             self.tokenizer = tokenizers.BertWordPieceTokenizer()
             self.tokenizer.train(files=text_paths, special_tokens=[
                                  "[UNK]", "[CLS]", "[SEP]", "[PAD]", "[MASK]"], vocab_size=14200)
-            self.tokenizer.save_model("./dataset/tok_model", "MaLaMo")
+            self.tokenizer.save_model("./dataset/tok_model", "MALBERT")
         self.tokenizer.enable_truncation(max_length=512)
         self.pretokenizer = tokenizers.pre_tokenizers.Sequence([Whitespace(), Digits(individual_digits=True)])
         self.vocab = self.tokenizer.get_vocab()
