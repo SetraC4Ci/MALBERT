@@ -5,3 +5,4 @@
 /src/output/*
 /src/trainer/__pycache__
 /.vscode
+/src/model/embedding/__pycache__
