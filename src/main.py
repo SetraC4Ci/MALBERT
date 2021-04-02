@@ -58,7 +58,7 @@ def train():
         if test_dataset is not None else None
 
     print("Building BERT model")
-    bert = BERT(vocab_size, hidden=args.hidden, n_layers=args.layers, attn_heads=args.attn_heads)
+    bert = BERT(vocab_size, tokenizer.pad_index, hidden=args.hidden, n_layers=args.layers, attn_heads=args.attn_heads)
 
     print("Creating BERT Trainer")
     trainer = BERTTrainer(bert, vocab_size, train_dataloader=train_data_loader, test_dataloader=test_data_loader,

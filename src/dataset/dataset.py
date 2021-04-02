@@ -37,11 +37,14 @@ class BERTDataset(Dataset):
         segment_label = ([1 for _ in range(len(t1))] + [2 for _ in range(len(t2))])[:self.seq_len]
         bert_input = (t1 + t2)[:self.seq_len]
         bert_label = (t1_label + t2_label)[:self.seq_len]
+        input_mask = ([True for _ in range(len(bert_input))])[:self.seq_len]
 
         padding = [self.tokenizer.pad_index for _ in range(self.seq_len - len(bert_input))]
+        padding_mask = [False for _ in range(self.seq_len - len(bert_input))]
         bert_input.extend(padding)
         bert_label.extend(padding)
         segment_label.extend(padding)
+        input_mask.extend(padding_mask)
 
         output = {"bert_input": bert_input,
                   "bert_label": bert_label,
