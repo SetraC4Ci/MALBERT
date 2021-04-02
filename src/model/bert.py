@@ -35,7 +35,7 @@ class BERT(nn.Module):
         # multi-layers transformer blocks, deep network
         #self.transformer_blocks = nn.ModuleList(
         #    [TransformerBlock(hidden, attn_heads, hidden * 4, dropout) for _ in range(n_layers)])
-        encoder_layers = nn.TransformerEncoderLayer(hidden, attn_heads, self.feed_forward_hidden, dropout)
+        encoder_layers = nn.TransformerEncoderLayer(hidden, attn_heads, self.feed_forward_hidden, dropout, activation="gelu")
         self.transformer_encoder = nn.TransformerEncoder(encoder_layers, n_layers)
 
     def _generate_square_subsequent_mask(self, sz):
